@@ -1,0 +1,399 @@
+
+<h2 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Gallery access settings in dark theme</h2>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg0:#111111;
+  --bg1:#1c1c1c;
+  --bg2:#242424;
+  --bg3:#303030;
+  --bd:#2e2e2e;
+  --bd2:#3a3a3a;
+  --tx0:#ffffff;
+  --tx1:#e2e2e2;
+  --tx2:#ababab;
+  --tx3:#666666;
+  --blue:#3b82f6;
+  --blue-bg:rgba(59,130,246,0.12);
+  --blue-bd:rgba(59,130,246,0.3);
+  --blue-tx:#93c5fd;
+  --green:#22c55e;
+  --green-bg:rgba(34,197,94,0.10);
+  --green-bd:rgba(34,197,94,0.28);
+  --green-tx:#86efac;
+  --purple:#a855f7;
+  --purple-bg:rgba(168,85,247,0.10);
+  --purple-bd:rgba(168,85,247,0.28);
+  --purple-tx:#d8b4fe;
+  --amber-bg:rgba(245,158,11,0.12);
+  --amber-bd:rgba(245,158,11,0.3);
+  --amber-tx:#fcd34d;
+}
+body{background:var(--bg0);font-family:-apple-system,BlinkMacSystemFont,'Inter',sans-serif}
+.s{background:var(--bg1);border:1px solid var(--bd);border-radius:12px;overflow:hidden;max-width:680px}
+.top{padding:14px 20px;border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;background:var(--bg1)}
+.av{width:30px;height:30px;border-radius:8px;background:rgba(59,130,246,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.t-title{font-size:14px;font-weight:600;color:var(--tx0)}
+.t-sub{font-size:11px;color:var(--tx2);margin-top:1px}
+.savebtn{background:var(--blue);color:#fff;border:none;border-radius:8px;padding:7px 16px;font-size:12px;font-weight:500;cursor:pointer;font-family:inherit}
+.body{display:grid;grid-template-columns:1fr 210px}
+.main{padding:20px;border-right:1px solid var(--bd);background:var(--bg1)}
+.aside{padding:18px;background:var(--bg0)}
+.sg{margin-bottom:22px}
+.slbl{font-size:10px;font-weight:600;color:var(--tx3);text-transform:uppercase;letter-spacing:0.6px;margin-bottom:10px}
+.mode-row{display:flex;gap:7px}
+.mtile{flex:1;padding:11px 12px;border-radius:10px;border:1.5px solid var(--bd);cursor:pointer;background:var(--bg2);font-family:inherit;text-align:left;transition:all .15s}
+.mtile.on{border-color:var(--blue);background:rgba(59,130,246,0.08)}
+.m-dot{width:7px;height:7px;border-radius:50%;margin-bottom:7px}
+.m-name{font-size:12px;font-weight:600;color:var(--tx1)}
+.m-desc{font-size:11px;color:var(--tx3);margin-top:2px;line-height:1.4}
+.mtile.on .m-name{color:var(--blue-tx)}
+.rtabs{display:flex;border:1px solid var(--bd);border-radius:10px;overflow:hidden;margin-bottom:16px;background:var(--bg2)}
+.rtab{flex:1;padding:9px 12px;background:transparent;border:none;font-family:inherit;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;font-size:12px;font-weight:500;color:var(--tx3);border-right:1px solid var(--bd);transition:all .15s}
+.rtab:last-child{border-right:none}
+.rtab.on{background:var(--bg3);color:var(--tx1)}
+.rdot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.rcard{background:var(--bg2);border:1px solid var(--bd);border-radius:10px;overflow:hidden}
+.rcard-top{padding:14px 16px;border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;background:var(--bg2)}
+.rname{font-size:13px;font-weight:600;color:var(--tx0)}
+.rsub{font-size:11px;color:var(--tx3);margin-top:2px}
+.tw{display:flex;align-items:center;gap:8px}
+.tl{font-size:11px;color:var(--tx3)}
+.tog{width:34px;height:19px;border-radius:10px;display:flex;align-items:center;padding:2px;cursor:pointer;transition:background .18s;flex-shrink:0}
+.tth{width:15px;height:15px;border-radius:50%;background:#fff;transition:transform .18s;box-shadow:0 1px 3px rgba(0,0,0,0.5)}
+.sdiv{padding:12px 16px 6px;font-size:10px;font-weight:600;color:var(--tx3);text-transform:uppercase;letter-spacing:0.5px;border-top:1px solid var(--bd)}
+.sdiv.first{border-top:none}
+.prow{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--bd)}
+.prow:last-child{border-bottom:none}
+.pl{display:flex;align-items:center;gap:11px;flex:1;min-width:0}
+.pico{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.pname{font-size:12px;font-weight:600;color:var(--tx1)}
+.pdesc{font-size:11px;color:var(--tx3);margin-top:2px;line-height:1.3}
+.ltag{display:inline-flex;align-items:center;gap:3px;font-size:10px;padding:2px 6px;border-radius:20px;background:var(--amber-bg);color:var(--amber-tx);border:1px solid var(--amber-bd);margin-top:4px;font-weight:500}
+.face-block{border-bottom:1px solid var(--bd)}
+.face-hdr{display:flex;align-items:center;justify-content:space-between;padding:12px 16px}
+.face-opts{padding:0 16px 14px;display:flex;flex-direction:column;gap:7px}
+.fopt{display:flex;align-items:flex-start;gap:10px;padding:11px 12px;border-radius:10px;border:1.5px solid var(--bd);cursor:pointer;background:var(--bg3);font-family:inherit;text-align:left;width:100%;transition:all .15s}
+.fopt.on{border-color:var(--green);background:rgba(34,197,94,0.07)}
+.frad{width:15px;height:15px;border-radius:50%;border:1.5px solid var(--bd2);flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center}
+.fdot{width:6px;height:6px;border-radius:50%;background:var(--green);display:none}
+.fopt.on .frad{border-color:var(--green)}
+.fopt.on .fdot{display:block}
+.fopt-name{font-size:12px;font-weight:600;color:var(--tx1)}
+.fopt.on .fopt-name{color:var(--green-tx)}
+.fopt-desc{font-size:11px;color:var(--tx3);margin-top:2px;line-height:1.4}
+.ftag{display:inline-flex;align-items:center;gap:3px;font-size:10px;padding:2px 6px;border-radius:20px;margin-top:5px;font-weight:500}
+.face-off{padding:0 16px 12px;font-size:11px;color:var(--tx3);display:flex;align-items:center;gap:5px}
+.frow{display:flex;align-items:center;justify-content:space-between;padding:11px 16px;border-bottom:1px solid var(--bd)}
+.frow:last-child{border-bottom:none}
+.fname{font-size:12px;font-weight:500;color:var(--tx1)}
+.fopts{display:flex;gap:3px}
+.fo{padding:4px 9px;border-radius:20px;border:1px solid var(--bd2);background:transparent;color:var(--tx3);font-size:11px;cursor:pointer;font-family:inherit;transition:all .12s}
+.fo.on{font-weight:600}
+.srow{padding:14px 16px;border-bottom:1px solid var(--bd)}
+.srow:last-child{border-bottom:none}
+.srlbl{font-size:11px;font-weight:600;color:var(--tx2);margin-bottom:7px}
+.inp{width:100%;padding:7px 10px;font-size:12px;border:1px solid var(--bd2);border-radius:8px;background:var(--bg3);color:var(--tx0);font-family:inherit;outline:none}
+.inp:focus{border-color:var(--blue)}
+.lrow{display:flex;gap:7px;align-items:center}
+.lval{flex:1;padding:7px 10px;font-size:10px;font-family:monospace;border:1px solid var(--bd);border-radius:8px;background:var(--bg3);color:var(--tx3)}
+.cbtn{padding:7px 11px;font-size:11px;font-weight:500;border:1px solid var(--bd2);border-radius:8px;background:var(--bg3);color:var(--tx1);cursor:pointer;font-family:inherit;white-space:nowrap}
+.chip{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:20px;margin-right:4px;margin-top:4px}
+.vst{display:flex;align-items:center;justify-content:space-between;padding:9px 11px;background:var(--bg3);border-radius:8px;border:1px solid var(--bd)}
+.vlnk{font-size:11px;color:var(--blue);background:none;border:none;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:3px}
+.dis{opacity:0.32;pointer-events:none}
+.aside-slbl{font-size:10px;font-weight:600;color:var(--tx3);text-transform:uppercase;letter-spacing:0.6px;margin-bottom:10px}
+.dlrow{display:flex;gap:7px;margin-bottom:18px}
+.dlo{flex:1;padding:9px 10px;border-radius:9px;border:1.5px solid var(--bd);cursor:pointer;background:var(--bg2);font-family:inherit;text-align:left;transition:all .13s}
+.dlo.on{border-color:var(--blue);background:rgba(59,130,246,0.08)}
+.dlo-name{font-size:11px;font-weight:600;color:var(--tx1)}
+.dlo.on .dlo-name{color:var(--blue-tx)}
+.dlo-sub{font-size:10px;color:var(--tx3);margin-top:2px}
+.si{display:flex;align-items:center;gap:7px;padding:7px 0;border-bottom:1px solid var(--bd)}
+.si:last-child{border-bottom:none}
+.si-lbl{font-size:11px;color:var(--tx1);flex:1}
+.si-lbl.off{color:var(--tx3)}
+.sbadge{font-size:9px;padding:2px 6px;border-radius:20px}
+</style>
+
+<div class="s">
+  <div class="top">
+    <div style="display:flex;align-items:center;gap:10px">
+      <div class="av"><i class="ti ti-photo" style="font-size:15px;color:var(--blue)" aria-hidden="true"></i></div>
+      <div>
+        <div class="t-title">Johnson Wedding · 2026</div>
+        <div class="t-sub">Privacy & access</div>
+      </div>
+    </div>
+    <button class="savebtn">Save changes</button>
+  </div>
+
+  <div class="body">
+    <div class="main">
+      <div class="sg">
+        <div class="slbl">Data capture</div>
+        <div class="mode-row">
+          <button class="mtile on" id="mt-A" onclick="setMode('A')">
+            <div class="m-dot" style="background:#555"></div>
+            <div class="m-name">None</div>
+            <div class="m-desc">No data collected. Anyone with the link can enter.</div>
+          </button>
+          <button class="mtile" id="mt-B" onclick="setMode('B')">
+            <div class="m-dot" style="background:#d97706"></div>
+            <div class="m-name">On action</div>
+            <div class="m-desc">Email captured when a visitor downloads or comments.</div>
+          </button>
+          <button class="mtile" id="mt-C" onclick="setMode('C')">
+            <div class="m-dot" style="background:var(--blue)"></div>
+            <div class="m-name">At entry</div>
+            <div class="m-desc">Name and email required before viewing the gallery.</div>
+          </button>
+        </div>
+      </div>
+
+      <div>
+        <div class="slbl">Who can access</div>
+        <div class="rtabs">
+          <button class="rtab on" id="tab-client" onclick="setRole('client')">
+            <span class="rdot" style="background:var(--blue)"></span>Client
+          </button>
+          <button class="rtab" id="tab-guest" onclick="setRole('guest')">
+            <span class="rdot" style="background:var(--green)"></span>Guest
+          </button>
+          <button class="rtab" id="tab-vendor" onclick="setRole('vendor')">
+            <span class="rdot" style="background:var(--purple)"></span>Vendor
+          </button>
+        </div>
+        <div id="rcard"></div>
+      </div>
+    </div>
+
+    <div class="aside">
+      <div class="aside-slbl">Link delivery</div>
+      <div class="dlrow">
+        <button class="dlo on" id="dl-single" onclick="setLink('single')">
+          <div class="dlo-name">Single link</div>
+          <div class="dlo-sub">Role chooser at entry</div>
+        </button>
+        <button class="dlo" id="dl-sep" onclick="setLink('separate')">
+          <div class="dlo-name">Separate</div>
+          <div class="dlo-sub">One URL per role</div>
+        </button>
+      </div>
+      <div class="aside-slbl">Summary</div>
+      <div id="summary"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const RC={
+  client:{hex:'#3b82f6',bg:'rgba(59,130,246,0.12)',bd:'rgba(59,130,246,0.3)',tx:'#93c5fd'},
+  guest: {hex:'#22c55e',bg:'rgba(34,197,94,0.10)', bd:'rgba(34,197,94,0.28)', tx:'#86efac'},
+  vendor:{hex:'#a855f7',bg:'rgba(168,85,247,0.10)',bd:'rgba(168,85,247,0.28)',tx:'#d8b4fe'},
+};
+const LN={client:'Client',guest:'Guest',vendor:'Vendor'};
+const RSUBS={
+  client:'Primary recipient — bride, groom, portrait subject',
+  guest:'Family & friends invited to view',
+  vendor:'Florist, venue, editor, planner',
+};
+const S={
+  mode:'A',activeRole:'client',link:'single',
+  roles:{client:true,guest:true,vendor:false},
+  perms:{
+    client:{comments:false,download:true,markPrivate:true,aiFilter:false},
+    guest:{faceScan:'off',password:true,comments:false,download:false},
+    vendor:{mediaTerms:true,shop:false,download:true},
+  },
+  fields:{
+    client:{name:'required',phone:'optional'},
+    guest:{name:'optional',phone:'skip'},
+    vendor:{name:'required',phone:'skip'},
+  },
+};
+const CP=[
+  {k:'comments',   name:'Comments',      desc:'Clients can leave comments on photos',    bg:'rgba(59,130,246,0.08)', ic:'ti-message'},
+  {k:'download',   name:'Download',      desc:'Clients can download high-res photos',    bg:'rgba(59,130,246,0.08)', ic:'ti-download'},
+  {k:'markPrivate',name:'Mark private',  desc:'Clients can hide photos from guests',     bg:'rgba(59,130,246,0.08)', ic:'ti-eye-off'},
+  {k:'aiFilter',   name:'AI face scenes',desc:'Each client sees their own filtered view',bg:'rgba(59,130,246,0.08)', ic:'ti-face-id'},
+];
+const GP=[
+  {k:'password',name:'Password',desc:'Guests must enter a password to enter',   bg:'rgba(34,197,94,0.08)', ic:'ti-lock'},
+  {k:'comments',name:'Comments',desc:'Guests can leave comments on photos',     bg:'rgba(34,197,94,0.08)', ic:'ti-message'},
+  {k:'download',name:'Download',desc:'Guests can download photos',              bg:'rgba(34,197,94,0.08)', ic:'ti-download'},
+];
+const VP=[
+  {k:'mediaTerms',name:'Media terms',desc:'Vendors must accept terms before viewing', bg:'rgba(168,85,247,0.08)',ic:'ti-file-certificate'},
+  {k:'shop',      name:'Vendor shop', desc:'Vendors can purchase prints & products',  bg:'rgba(168,85,247,0.08)',ic:'ti-shopping-cart'},
+  {k:'download',  name:'Download',    desc:'Vendors can download with a license',     bg:'rgba(168,85,247,0.08)',ic:'ti-download'},
+];
+
+function G(id){return document.getElementById(id)}
+function cLocked(k){
+  if(k==='comments'&&S.mode==='A') return 'Needs mode B or C';
+  if(k==='aiFilter'&&S.mode!=='C')  return 'Needs mode C';
+  return null;
+}
+function gLocked(k){
+  if(k==='comments'&&S.mode==='A') return 'Needs mode B or C';
+  return null;
+}
+function makeTog(on,hexColor,cb){
+  const d=document.createElement('div');
+  d.className='tog';
+  d.style.background=on?hexColor:'#333';
+  d.innerHTML=`<div class="tth" style="transform:translateX(${on?15:0}px)"></div>`;
+  d.onclick=()=>{const n=!on;on=n;d.style.background=n?hexColor:'#333';d.querySelector('.tth').style.transform=`translateX(${n?15:0}px)`;cb(n);};
+  return d;
+}
+function mkProw(p,isOn,c,lockMsg,cb){
+  const row=document.createElement('div');row.className='prow';
+  const left=document.createElement('div');left.className='pl';
+  const ico=document.createElement('div');ico.className='pico';ico.style.background=p.bg;
+  ico.innerHTML=`<i class="ti ${p.ic}" style="font-size:15px;color:${lockMsg?'#555':c.hex}" aria-hidden="true"></i>`;
+  const txt=document.createElement('div');
+  txt.innerHTML=`<div class="pname">${p.name}</div><div class="pdesc">${p.desc}</div>${lockMsg?`<div class="ltag"><i class="ti ti-lock" style="font-size:9px" aria-hidden="true"></i>${lockMsg}</div>`:''}`;
+  left.appendChild(ico);left.appendChild(txt);row.appendChild(left);
+  if(lockMsg){
+    const off=document.createElement('div');off.className='tog';off.style.background='#333';off.style.opacity='0.4';off.style.cursor='not-allowed';off.innerHTML='<div class="tth"></div>';
+    row.appendChild(off);
+  } else {
+    row.appendChild(makeTog(isOn,c.hex,cb));
+  }
+  return row;
+}
+function faceScanBlock(){
+  const needsC=S.mode!=='C';
+  const val=S.perms.guest.faceScan;
+  const block=document.createElement('div');block.className='face-block';
+  const hdr=document.createElement('div');hdr.className='face-hdr';
+  const left=document.createElement('div');left.className='pl';
+  const ico=document.createElement('div');ico.className='pico';ico.style.background='rgba(34,197,94,0.08)';
+  ico.innerHTML=`<i class="ti ti-scan" style="font-size:15px;color:${needsC?'#555':'var(--green)'}" aria-hidden="true"></i>`;
+  const txt=document.createElement('div');
+  txt.innerHTML=`<div class="pname">Face scan</div><div class="pdesc">Let guests find their own photos using a selfie</div>${needsC?`<div class="ltag"><i class="ti ti-lock" style="font-size:9px" aria-hidden="true"></i>Needs mode C</div>`:''}`;
+  left.appendChild(ico);left.appendChild(txt);hdr.appendChild(left);
+  if(needsC){
+    const off=document.createElement('div');off.className='tog';off.style.background='#333';off.style.opacity='0.4';off.style.cursor='not-allowed';off.innerHTML='<div class="tth"></div>';
+    hdr.appendChild(off);block.appendChild(hdr);return block;
+  }
+  const isFaceOn=val!=='off';
+  hdr.appendChild(makeTog(isFaceOn,'#22c55e',v=>{S.perms.guest.faceScan=v?'gate':'off';renderCard();renderSummary();}));
+  block.appendChild(hdr);
+  if(!isFaceOn){
+    const note=document.createElement('div');note.className='face-off';
+    note.innerHTML=`<i class="ti ti-info-circle" style="font-size:12px" aria-hidden="true"></i>Turn on to choose how guests use face scan`;
+    block.appendChild(note);return block;
+  }
+  const opts=document.createElement('div');opts.className='face-opts';
+  [
+    {v:'gate',   name:'Required at entry',      desc:'Guests must scan before seeing anything. They only see photos they appear in.',tagTxt:'Hard gate',   tagBg:'rgba(239,68,68,0.12)',  tagTx:'#fca5a5',tagIc:'ti-lock'},
+    {v:'anytime',name:'Optional — scan anytime',desc:'Guests browse freely, then tap "Find my photos" to filter to just themselves.', tagTxt:'Soft prompt', tagBg:'rgba(34,197,94,0.12)', tagTx:'#86efac', tagIc:'ti-search'},
+  ].forEach(opt=>{
+    const btn=document.createElement('button');btn.className='fopt'+(val===opt.v?' on':'');
+    btn.innerHTML=`<div class="frad"><div class="fdot"></div></div><div><div class="fopt-name">${opt.name}</div><div class="fopt-desc">${opt.desc}</div><span class="ftag" style="background:${opt.tagBg};color:${opt.tagTx}"><i class="ti ${opt.tagIc}" style="font-size:9px" aria-hidden="true"></i>${opt.tagTxt}</span></div>`;
+    btn.onclick=()=>{S.perms.guest.faceScan=opt.v;renderCard();renderSummary();};
+    opts.appendChild(btn);
+  });
+  block.appendChild(opts);return block;
+}
+function mkFieldsBlock(role){
+  const c=RC[role];
+  const wrap=document.createElement('div');
+  const lbl=document.createElement('div');lbl.className='sdiv';lbl.textContent='Data fields';wrap.appendChild(lbl);
+  [['name','Name'],['phone','Phone']].forEach(([k,label])=>{
+    const row=document.createElement('div');row.className='frow';
+    const fn=document.createElement('div');fn.className='fname';fn.textContent=label;
+    const opts=document.createElement('div');opts.className='fopts';
+    ['required','optional','skip'].forEach(opt=>{
+      const active=S.fields[role][k]===opt;
+      const btn=document.createElement('button');btn.className='fo'+(active?' on':'');
+      btn.textContent=opt.charAt(0).toUpperCase()+opt.slice(1);
+      if(active){btn.style.background=c.bg;btn.style.color=c.tx;btn.style.borderColor=c.bd;}
+      btn.onclick=()=>{S.fields[role][k]=opt;renderCard();};
+      opts.appendChild(btn);
+    });
+    row.appendChild(fn);row.appendChild(opts);wrap.appendChild(row);
+  });
+  return wrap;
+}
+function renderCard(){
+  const role=S.activeRole;
+  const c=RC[role];
+  const en=S.roles[role];
+  const wrap=G('rcard');wrap.innerHTML='';
+  const card=document.createElement('div');card.className='rcard';
+  const top=document.createElement('div');top.className='rcard-top';
+  top.innerHTML=`<div><div class="rname">${LN[role]}</div><div class="rsub">${RSUBS[role]}</div></div>`;
+  const tw=document.createElement('div');tw.className='tw';
+  const lbl=document.createElement('span');lbl.className='tl';lbl.id='rtl';lbl.textContent=en?'Enabled':'Disabled';
+  tw.appendChild(lbl);
+  tw.appendChild(makeTog(en,c.hex,v=>{S.roles[role]=v;G('rtl').textContent=v?'Enabled':'Disabled';G('ri').classList.toggle('dis',!v);renderSummary();}));
+  top.appendChild(tw);card.appendChild(top);
+  const inner=document.createElement('div');inner.id='ri';if(!en)inner.className='dis';
+  const pl=document.createElement('div');pl.className='sdiv first';pl.textContent='Permissions';inner.appendChild(pl);
+  if(role==='client'){
+    const plist=document.createElement('div');
+    CP.forEach(p=>{const lk=cLocked(p.k);plist.appendChild(mkProw(p,S.perms.client[p.k],c,lk,v=>{S.perms.client[p.k]=v;renderSummary();}));});
+    inner.appendChild(plist);
+  } else if(role==='guest'){
+    inner.appendChild(faceScanBlock());
+    const plist=document.createElement('div');
+    GP.forEach(p=>{const lk=gLocked(p.k);plist.appendChild(mkProw(p,S.perms.guest[p.k],c,lk,v=>{S.perms.guest[p.k]=v;if(p.k==='password')renderCard();else renderSummary();}));});
+    inner.appendChild(plist);
+  } else {
+    const plist=document.createElement('div');
+    VP.forEach(p=>{plist.appendChild(mkProw(p,S.perms.vendor[p.k],c,null,v=>{S.perms.vendor[p.k]=v;renderSummary();}));});
+    inner.appendChild(plist);
+  }
+  if(S.mode==='C') inner.appendChild(mkFieldsBlock(role));
+  const sh=document.createElement('div');sh.innerHTML=`<div class="sdiv">Share</div>`;
+  if(role==='client'){
+    sh.innerHTML+=`<div class="srow"><div class="srlbl">Client emails</div><input type="email" class="inp" placeholder="Add email and press enter"><div style="margin-top:7px"><span class="chip" style="background:rgba(59,130,246,0.12)"><i class="ti ti-circle-check" style="font-size:11px;color:#3b82f6" aria-hidden="true"></i><span style="font-size:11px;color:#93c5fd">sarah.johnson@email.com</span></span><span class="chip" style="background:rgba(59,130,246,0.12)"><i class="ti ti-circle-check" style="font-size:11px;color:#3b82f6" aria-hidden="true"></i><span style="font-size:11px;color:#93c5fd">mike.johnson@email.com</span></span></div></div>`;
+  } else if(role==='guest'){
+    const gl=S.link==='single'?'galleries.aftershoot.com/johnson-2026':'galleries.aftershoot.com/johnson-2026/guests';
+    sh.innerHTML+=`<div class="srow"><div class="srlbl">Guest link</div><div class="lrow"><div class="lval">${gl}</div><button class="cbtn">Copy</button></div></div>`;
+    if(S.perms.guest.password) sh.innerHTML+=`<div class="srow"><div class="srlbl">Password</div><div class="lrow"><input type="text" class="inp" value="JohnsonWed26" style="font-family:monospace;font-size:12px"><button class="cbtn">Generate</button></div></div>`;
+  } else {
+    sh.innerHTML+=`<div class="srow"><div class="srlbl">Photos for this vendor</div><div class="vst"><div><div style="font-size:12px;font-weight:600;color:var(--tx0)">0 photos marked</div><div style="font-size:11px;color:var(--tx3);margin-top:2px">Select photos in the gallery</div></div><button class="vlnk"><i class="ti ti-arrow-right" style="font-size:11px" aria-hidden="true"></i> Go to gallery</button></div></div><div class="srow"><div class="srlbl">Vendor emails</div><input type="email" class="inp" placeholder="Add vendor email"></div>`;
+  }
+  inner.appendChild(sh);card.appendChild(inner);wrap.appendChild(card);
+}
+function renderSummary(){
+  const fs=S.perms.guest.faceScan;
+  const active=['client','guest','vendor'].filter(r=>S.roles[r]);
+  const items=[
+    {l:'Comments',           on:S.mode!=='A'&&S.roles.client&&S.perms.client.comments,                              r:'client'},
+    {l:'Face scan — gate',   on:S.mode==='C'&&S.roles.guest&&fs==='gate',                                           r:'guest'},
+    {l:'Face scan — anytime',on:S.mode==='C'&&S.roles.guest&&fs==='anytime',                                        r:'guest'},
+    {l:'AI face scenes',     on:S.mode==='C'&&S.roles.client&&S.perms.client.aiFilter,                              r:'client'},
+    {l:'Client download',    on:S.roles.client&&S.perms.client.download,                                            r:'client'},
+    {l:'Guest download',     on:S.mode!=='A'&&S.roles.guest&&S.perms.guest.download,                                r:'guest'},
+    {l:'Vendor gallery',     on:S.roles.vendor,                                                                      r:'vendor'},
+    {l:'Role chooser',       on:S.mode==='C'&&active.length>1&&S.link==='single',                                   r:null},
+    {l:'Marketing',          on:S.mode==='C',                                                                        r:null},
+  ];
+  const el=G('summary');el.innerHTML='';
+  items.forEach(item=>{
+    const c=item.r?RC[item.r]:null;
+    const row=document.createElement('div');row.className='si';
+    row.innerHTML=`<i class="ti ${item.on?'ti-circle-check':'ti-circle-x'}" style="font-size:14px;color:${item.on?(c?c.hex:'#22c55e'):'#333'}" aria-hidden="true"></i><span class="si-lbl${item.on?'':' off'}">${item.l}</span>${item.on&&c?`<span class="sbadge" style="background:${c.bg};color:${c.tx}">${LN[item.r]}</span>`:''}`;
+    el.appendChild(row);
+  });
+}
+function setMode(m){
+  S.mode=m;['A','B','C'].forEach(x=>G('mt-'+x).classList.toggle('on',x===m));
+  renderCard();renderSummary();
+}
+function setRole(r){
+  S.activeRole=r;['client','guest','vendor'].forEach(x=>G('tab-'+x).classList.toggle('on',x===r));
+  renderCard();
+}
+function setLink(lm){
+  S.link=lm;['single','sep'].forEach(x=>G('dl-'+x).classList.toggle('on',x===lm));
+  renderCard();renderSummary();
+}
+renderCard();renderSummary();
+</script>
